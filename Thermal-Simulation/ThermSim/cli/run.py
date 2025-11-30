@@ -1,12 +1,14 @@
 import argparse
 
-from ThermSim import LcmModel, animate
+from ThermSim import Lcm, animate
 
 
 def main():
-    model = LcmModel()
-    animate()
-    print('Run was successful')
+    # list of element capacities
+    elements = [1, 1, 1, 1, 1]
+    model = Lcm(elements)
+    print(model.series([0,1,2,4], [10, 20, 30]))
+
 
 
 if __name__ == "__main__":

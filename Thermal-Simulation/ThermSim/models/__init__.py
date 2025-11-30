@@ -1,1 +1,1 @@
-from .lcm import LcmModel
+from .lcm import Lcm

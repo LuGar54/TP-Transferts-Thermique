@@ -11,6 +11,7 @@ authors = [
 ]
 dependencies = [
   "numpy",
+  "sympy",
   "scipy",
   "pandas",
   "matplotlib",
@@ -20,4 +21,4 @@ dependencies = [
 description = "Thermal simulation of roadside weighing station scales"
 
 [project.scripts]
-run-sim = "ThermSim.cli.run:main"
+run = "ThermSim.cli.run:main"
