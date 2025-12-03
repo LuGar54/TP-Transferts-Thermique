@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thermal-simulation"
+dynamic = ["version"]
+authors = [
+  {name = "Andrew Forrester"},
+  {email = "anfor306@ulaval.ca"},
+]
+dependencies = [
+  "numpy",
+  "sympy",
+  "scipy",
+  "pandas",
+  "matplotlib",
+  "plotly",
+]
+
+description = "Thermal simulation of roadside weighing station scales"
+
+[project.scripts]
+run = "ThermSim.cli.run:main"
