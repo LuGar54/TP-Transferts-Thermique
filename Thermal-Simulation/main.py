@@ -24,9 +24,9 @@ def main():
     for i in range(6):
         model.series([i, i+6], [locals()[f'R{i+1}{i+7}']])
 
-    print(repr(sp.simplify(model.matrix)))
+    print(sp.simplify(model.matrix))
     # sp.pprint(model.matrix)
-    print(sp.latex(sp.simplify(model.matrix)))
+    # print(sp.latex(sp.simplify(model.matrix)))
 
 
 if __name__ == '__main__':
