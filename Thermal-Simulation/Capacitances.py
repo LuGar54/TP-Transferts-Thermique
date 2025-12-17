@@ -16,7 +16,7 @@ def get_capacitance_concrete(rho, cp, is_bou:bool):
     C_concrete = rho * cp * vol_concrete
     return C_concrete
 
-vol_cells = [volume_concrete(i) for i in isbout_vec]
-C_cells = [get_capacitance_concrete(rho, cp, i) for i in isbout_vec]
+vol_conc_cells = [volume_concrete(i) for i in isbout_vec]
+C_conc_cells = [get_capacitance_concrete(rho_conc, cp_conc, i) for i in isbout_vec]
 
-print(C_cells)
+print(C_conc_cells)

@@ -2,8 +2,8 @@ import numpy as np
 import sympy as sp
 
 from MatriceTransfert import Lcm
-from Capacitances import vol_cells
-from Capacitances import C_cells
+from Capacitances import vol_conc_cells
+from Capacitances import C_conc_cells
 
 
 def main():
