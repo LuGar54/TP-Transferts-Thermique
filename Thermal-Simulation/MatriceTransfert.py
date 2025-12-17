@@ -6,10 +6,9 @@ class Lcm:
     def __init__(self, elements):
         self.elements = elements
         n = len(elements)
-        # adjacency matrix stored as SymPy Matrix
+        
         self._adjacency = sp.zeros(n, n)
 
-    # Helper: Add conductance G between nodes a and b
     def _add_conductance(self, a, b, G):
         # diagonal terms
         self._adjacency[a, a] -= G
@@ -26,11 +25,10 @@ class Lcm:
         if len(resistances) != len(idx) - 1:
             raise ValueError("Need exactly len(idx)-1 resistances")
 
-        # Convert resistances to sympy
         resistances = [sp.sympify(R) for R in resistances]
         conductances = [1 / R for R in resistances]
 
-        # Pairwise connections
+        
         for a, b, G in zip(idx[:-1], idx[1:], conductances):
             self._add_conductance(a, b, G)
 
@@ -40,7 +38,6 @@ class Lcm:
         if len(idx) != len(resistances):
             raise ValueError("Need one resistance per parallel branch")
 
-        # Convert to sympy
         resistances = [sp.sympify(R) for R in resistances]
         Gs = [1 / R for R in resistances]
 
