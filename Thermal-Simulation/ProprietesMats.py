@@ -23,6 +23,7 @@ thickness_insul = 0.1  # m
 
 # Propriétés de l'air
 cp_air = 1005  # J/kgK
+rho_air = 1.225  # kg/m3
 
 m_a12_on = 0.2381
 m_a21_on = 0.4438
