@@ -5,9 +5,14 @@ tot_height = 1.7
 thickness_conc = 0.4
 p_len = tot_len/6
 
+a_mur = tot_height * tot_width
+a_p_mur = tot_height * p_len
+a_p_sol = tot_width * p_len
+
 # Propriétés du béton
 rho = 2400  # kg/m3
 cp = 880    # J/kgK
+k_conc = 1.8  # W/mK
 
 # Propriétés des cellules
 isbout_vec = [True, False, False, False, False, True]
