@@ -82,7 +82,7 @@ def controle(T1, T6, is_on) -> bool:
 
 def temp_sol(t):
     # la température du sol oscille entre -15 et -5 l'hivers au cours d'une journée
-    return -5*np.cos(t/(24*60)) - 10
+    return -5*np.cos(t*np.pi/(24*15)) - 10
 
 def simulate(duree, mats):
     # duree de la simulation en jours
@@ -111,8 +111,8 @@ def main():
 
     hist = simulate(31, mats)
     # animate_thermal_system(hist)
-    
-    plt.plot(np.linspace(0, 1, 31*24*30), hist[:,3])
+    x = np.linspace(0, 31, 31*24*30)
+    plt.plot(x, hist[:, 0], label='Cellule d\'air 1')
     plt.ylim(-20, 50)
     plt.show()
     
