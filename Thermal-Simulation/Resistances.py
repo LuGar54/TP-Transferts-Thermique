@@ -13,8 +13,6 @@ r_mur_beton = thickness_conc / (k_conc * a_mur)
 r_p_mur_beton = thickness_conc / (k_conc * a_p_mur)
 r_p_sol_beton = thickness_conc / (k_conc * a_p_sol)
 
-print(r_mur_beton, r_p_mur_beton, r_p_sol_beton)
-
 def get_beton_resistance(is_bou:bool):
     return 1/(1/(r_p_sol_beton) + 2/(r_p_mur_beton) + (1 if is_bou else 0)/r_mur_beton)
 
@@ -40,9 +38,6 @@ R_conv_n_sol = 1/(h_naturelle_sol * a_p_sol)
 
 R_convs_naturelles = [1/(1/R_conv_n_sol + 2/(R_conv_n_p_mur) + (1 if is_bou else 0)/R_conv_n_mur) for is_bou in isbout_vec]
 
-print(R_convs_forcee)
-print(R_convs_naturelles)
-
 R_12_on = 1/(m_a12_on*cp_air)
 R_21_on = 1/(m_a21_on*cp_air)
 R_23_on = 1/(m_a23_on*cp_air)
@@ -54,6 +49,9 @@ R_54_on = 1/(m_a54_on*cp_air)
 R_56_on = 1/(m_a56_on*cp_air)
 R_65_on = 1/(m_a65_on*cp_air)
 
+R_to_cell_on = [R_12_on, R_23_on, R_34_on, R_45_on, R_65_on]
+R_from_cell_on = [R_21_on, R_32_on, R_43_on, R_54_on, R_56_on]
+
 R_12_off = 1/(m_a12_off*cp_air)
 R_21_off = 1/(m_a21_off*cp_air)
 R_23_off = 1/(m_a23_off*cp_air)
@@ -64,3 +62,6 @@ R_45_off = 1/(m_a45_off*cp_air)
 R_54_off = 1/(m_a54_off*cp_air)
 R_56_off = 1/(m_a56_off*cp_air)
 R_65_off = 1/(m_a65_off*cp_air)
+
+R_to_cell_off = [R_12_off, R_23_off, R_34_off, R_45_off, R_65_off]
+R_from_cell_off = [R_21_off, R_32_off, R_43_off, R_54_off, R_56_off]
