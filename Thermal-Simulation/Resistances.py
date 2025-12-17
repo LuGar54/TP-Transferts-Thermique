@@ -20,6 +20,8 @@ def get_beton_resistance(is_bou:bool):
 
 R_betons = [get_beton_resistance(i) for i in isbout_vec]
 
+R_Tbet_Text = [R_betons[i] + R_insuls[i] for i in range(len(isbout_vec))]
+
 R_12_on = 1/(m_a12_on*cp_air)
 R_21_on = 1/(m_a21_on*cp_air)
 R_23_on = 1/(m_a23_on*cp_air)
