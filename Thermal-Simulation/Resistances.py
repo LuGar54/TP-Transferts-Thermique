@@ -20,6 +20,29 @@ def get_beton_resistance(is_bou:bool):
 
 R_betons = [get_beton_resistance(i) for i in isbout_vec]
 
+R_Tbet_Text = [R_betons[i] + R_insuls[i] for i in range(len(isbout_vec))]
+
+h_forcee_murs = 8.33  # W/m2K
+h_forcee_sol = 6.25    # W/m2K
+
+h_naturelle_murs = 2.6  # W/m2K
+h_naturelle_sol = 3.7   # W/m2K
+
+R_conv_f_mur = 1/(h_forcee_murs * a_mur)
+R_conv_f_p_mur = 1/(h_forcee_murs * a_p_mur)
+R_conv_f_sol = 1/(h_forcee_sol * a_p_sol)
+
+R_convs_forcee = [1/(1/R_conv_f_sol + 2/(R_conv_f_p_mur) + (1 if is_bou else 0)/R_conv_f_mur) for is_bou in isbout_vec]
+
+R_conv_n_mur = 1/(h_naturelle_murs * a_mur)
+R_conv_n_p_mur = 1/(h_naturelle_murs * a_p_mur)
+R_conv_n_sol = 1/(h_naturelle_sol * a_p_sol)
+
+R_convs_naturelles = [1/(1/R_conv_n_sol + 2/(R_conv_n_p_mur) + (1 if is_bou else 0)/R_conv_n_mur) for is_bou in isbout_vec]
+
+print(R_convs_forcee)
+print(R_convs_naturelles)
+
 R_12_on = 1/(m_a12_on*cp_air)
 R_21_on = 1/(m_a21_on*cp_air)
 R_23_on = 1/(m_a23_on*cp_air)
