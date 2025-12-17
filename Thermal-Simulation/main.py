@@ -2,8 +2,8 @@ import numpy as np
 import sympy as sp
 
 from MatriceTransfert import Lcm
-from Capacitances import vol_cells as vols
-from Capacitances import C_cells as C
+from Capacitances import vol_cells
+from Capacitances import C_cells
 
 
 def main():
@@ -18,7 +18,6 @@ def main():
     for i, r_symbol in zip(range(6), R_vert):
         model.series([i, i+6], [r_symbol])
 
-     
     transfer_mat = cmat @ model.matrix
     transfer_mat.simplify()
     # sp.pprint(cmat)
@@ -26,6 +25,8 @@ def main():
 
     # watch out c'est vrm laid!
     sp.pprint(transfer_mat)
+
+    subs_cap = dict(zip(C, C_cells + [)) 
     
 
 if __name__ == '__main__':

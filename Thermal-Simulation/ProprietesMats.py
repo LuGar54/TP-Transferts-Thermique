@@ -10,8 +10,8 @@ a_p_mur = tot_height * p_len
 a_p_sol = tot_width * p_len
 
 # Propriétés du béton
-rho = 2400  # kg/m3
-cp = 880    # J/kgK
+rho_conc = 2400  # kg/m3
+cp_conc = 880    # J/kgK
 k_conc = 1.8  # W/mK
 
 # Propriétés des cellules
