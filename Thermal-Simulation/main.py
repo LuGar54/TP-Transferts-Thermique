@@ -49,16 +49,16 @@ def main():
     subs_res_cell_on = dict(zip(R_horiz, R_to_cell_on))
     subs_res_cell_off = dict(zip(R_horiz, R_to_cell_off))
     subs_res_conc_on = dict(zip(R_vert, R_convs_forcee))
-    subs_res_conc_off = dict(zip(R_vert, R_convs_naturelle))
+    subs_res_conc_off = dict(zip(R_vert, R_convs_naturelles))
     subs_res_ext = dict(zip(R_ext, R_Tbet_Text))
 
     transfer_mat = transfer_mat.subs(subs_cap).subs(subs_res_ext)
     
     transfert_mat_on = transfer_mat.subs(subs_res_cell_on).subs(subs_res_conc_on)
     transfert_mat_off = transfer_mat.subs(subs_res_cell_off).subs(subs_res_conc_off)
-    
+
     print(sp.latex(transfert_mat_on))
-    print(sp.latex(transfert_mat_off))
+    # print(sp.latex(transfert_mat_off))
 
 if __name__ == '__main__':
     main()

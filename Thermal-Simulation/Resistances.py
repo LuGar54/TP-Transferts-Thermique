@@ -38,9 +38,6 @@ R_conv_n_sol = 1/(h_naturelle_sol * a_p_sol)
 
 R_convs_naturelles = [1/(1/R_conv_n_sol + 2/(R_conv_n_p_mur) + (1 if is_bou else 0)/R_conv_n_mur) for is_bou in isbout_vec]
 
-print(R_convs_forcee)
-print(R_convs_naturelles)
-
 R_12_on = 1/(m_a12_on*cp_air)
 R_21_on = 1/(m_a21_on*cp_air)
 R_23_on = 1/(m_a23_on*cp_air)
