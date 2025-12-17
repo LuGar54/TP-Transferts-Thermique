@@ -20,4 +20,24 @@ def get_beton_resistance(is_bou:bool):
 
 R_betons = [get_beton_resistance(i) for i in isbout_vec]
 
-print(R_betons)
+R_12_on = 1/(m_a12_on*cp_air)
+R_21_on = 1/(m_a21_on*cp_air)
+R_23_on = 1/(m_a23_on*cp_air)
+R_32_on = 1/(m_a32_on*cp_air)
+R_34_on = 1/(m_a34_on*cp_air)
+R_43_on = 1/(m_a43_on*cp_air)
+R_45_on = 1/(m_a45_on*cp_air)
+R_54_on = 1/(m_a54_on*cp_air)
+R_56_on = 1/(m_a56_on*cp_air)
+R_65_on = 1/(m_a65_on*cp_air)
+
+R_12_off = 1/(m_a12_off*cp_air)
+R_21_off = 1/(m_a21_off*cp_air)
+R_23_off = 1/(m_a23_off*cp_air)
+R_32_off = 1/(m_a32_off*cp_air)
+R_34_off = 1/(m_a34_off*cp_air)
+R_43_off = 1/(m_a43_off*cp_air)
+R_45_off = 1/(m_a45_off*cp_air)
+R_54_off = 1/(m_a54_off*cp_air)
+R_56_off = 1/(m_a56_off*cp_air)
+R_65_off = 1/(m_a65_off*cp_air)
