@@ -11,12 +11,14 @@ def volume_concrete(is_bou:bool):
         vol_walls += (tot_height * tot_width * thickness_conc)
     return vol_floor + vol_walls
 
-def get_capacitance(rho, cp, is_bou:bool):
-    vol_concrete = volume_concrete(is_bou)
-    C_concrete = rho * cp * vol_concrete
+def get_capacitance_concrete(rho, cp, vol_conc):
+    C_concrete = rho * cp * vol_conc
     return C_concrete
 
-vol_cells = [volume_concrete(i) for i in isbout_vec]
-C_cells = [get_capacitance(rho, cp, i) for i in isbout_vec]
+vol_conc_cells = [volume_concrete(i) for i in isbout_vec]
+C_conc_cells = [get_capacitance_concrete(rho_conc, cp_conc, i) for i in vol_conc_cells]
 
-print(C_cells)
+vol_air_cells = [tot_width * tot_height * p_len for _ in isbout_vec]
+C_air_cells = [rho_air * cp_air * vol for vol in vol_air_cells]
+
+print(C_conc_cells)
