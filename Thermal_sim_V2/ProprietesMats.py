@@ -12,9 +12,10 @@ a_p_mur = tot_height * p_len
 a_p_sol = tot_width * p_len
 
 # Propriétés du béton
-rho_conc = 2400  # kg/m3
-cp_conc = 880    # J/kgK
-k_conc = 1.8  # W/mK
+# Sources : https://www.engineeringtoolbox.com/concrete-properties-d_1223.html
+rho_conc = 2300  # kg/m3
+cp_conc = 850    # J/kgK
+k_conc = 1.1  # W/mK
 
 # Propriétés des cellules
 isbout_vec = [True, False, False, False, False, True]
@@ -24,7 +25,7 @@ k_insul = 0.02  # W/mK
 thickness_insul = 0.1  # m
 
 # Propriétés de l'acier
-k_acier = 50  # W/mK
+k_acier = 45  # W/mK
 thickness_acier = 1E-2  # m
 
 # Propriétés de l'asphalte
