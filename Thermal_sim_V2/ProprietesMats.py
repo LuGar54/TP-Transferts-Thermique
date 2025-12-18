@@ -25,11 +25,11 @@ thickness_insul = 0.1  # m
 
 # Propriétés de l'acier
 k_acier = 50  # W/mK
-thickness_acier = 0.0095  # m
+thickness_acier = 1E-2  # m
 
 # Propriétés de l'asphalte
-k_asphalte = 0.8  # W/mK
-thickness_asphalte = 0.08
+k_asphalte = 1.2  # W/mK
+thickness_asphalte = 8E-3
 
 # Propriétés de l'air
 cp_air = 1005  # J/kgK

@@ -318,4 +318,4 @@ def simulation(csv_path, t_end_hours=200):
 if __name__ == "__main__":
     # Nom du fichier CSV fourni
     filepath = r"Data/Dataset of weighing station temperature measurements.csv"
-    simulation(filepath, 300)
+    simulation(filepath, 2000)

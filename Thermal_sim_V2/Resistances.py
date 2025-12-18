@@ -23,8 +23,8 @@ h_forcee_sol = 6.25    # W/m2K
 
 h_naturelle_murs = 2.6  # W/m2K
 h_naturelle_sol = 3.7   # W/m2K
-h_exterieure_sol = 15.1  # W/m2K
-h_plafond = 11         # W/m2K
+h_exterieure_sol = 30  # W/m2K
+h_plafond = 5         # W/m2K
 
 R_conv_f_mur = 1/(h_forcee_murs * a_mur)
 R_conv_f_p_mur = 1/(h_forcee_murs * a_p_mur)
@@ -43,7 +43,7 @@ R_Tbet_Tsol_nat = [R_convs_naturelles[i] + R_betons[i] + R_insuls[i] for i in ra
 
 R_Tbet_Tsol_force = [R_convs_forcee[i] + R_betons[i] + R_insuls[i] for i in range(len(isbout_vec))]
 
-# R_plafond_ext = (1/(1/R_conv_n_sol + k_acier/(a_p_sol*thickness_acier) + k_asphalte/(a_p_sol*thickness_asphalte) + 1/(h_exterieure_sol * a_p_sol)))
+#R_plafond_ext = (1/(1/R_conv_n_sol + k_acier/(a_p_sol*thickness_acier) + k_asphalte/(a_p_sol*thickness_asphalte) + 1/(h_exterieure_sol * a_p_sol)))
 R_plafond_ext = R_conv_n_plaf + thickness_acier/(k_acier*a_p_sol) + thickness_asphalte/(a_p_sol*k_asphalte) + 1/(h_exterieure_sol * a_p_sol)
 
 R_12_on = 1/(m_a12_on*cp_air)

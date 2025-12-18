@@ -21,4 +21,4 @@ C_conc_cells = [get_capacitance_concrete(rho_conc, cp_conc, i) for i in vol_conc
 vol_air_cells = [tot_width * tot_height * p_len for _ in isbout_vec]
 C_air_cells = [rho_air * cp_air * vol for vol in vol_air_cells]
 
-C_air_ajuste = C_air_cells + (np.array(C_conc_cells)/8)
+C_air_ajuste = C_air_cells + (np.array(C_conc_cells)/5)
