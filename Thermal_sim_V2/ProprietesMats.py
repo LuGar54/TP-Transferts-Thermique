@@ -12,7 +12,6 @@ a_p_mur = tot_height * p_len
 a_p_sol = tot_width * p_len
 
 # Propriétés du béton
-# Sources : https://www.engineeringtoolbox.com/concrete-properties-d_1223.html
 rho_conc = 2300  # kg/m3
 cp_conc = 850    # J/kgK
 k_conc = 1.1  # W/mK
@@ -29,7 +28,7 @@ k_acier = 45  # W/mK
 thickness_acier = 1E-2  # m
 
 # Propriétés de l'asphalte
-k_asphalte = 1.2  # W/mK
+k_asphalte = 0.7  # W/mK
 thickness_asphalte = 8E-3
 
 # Propriétés de l'air
