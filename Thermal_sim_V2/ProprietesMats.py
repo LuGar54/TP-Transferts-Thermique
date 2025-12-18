@@ -34,6 +34,12 @@ thickness_asphalte = 8E-3
 # Propriétés de l'air
 cp_air = 1005  # J/kgK
 rho_air = 1.225  # kg/m3
+h_forcee_murs = 8.33  # W/m2K
+h_forcee_sol = 6.25    # W/m2K
+h_naturelle_murs = 2.6  # W/m2K
+h_naturelle_sol = 3.7   # W/m2K
+h_exterieure_sol = 30  # W/m2K
+h_plafond = 5         # W/m2K
 
 m_a12_on = 0.2381
 m_a21_on = 0.4438
