@@ -1,5 +1,6 @@
 import numpy as np
 import sympy as sp
+import matplotlib.pyplot as plt
 
 from MatriceTransfert import Lcm
 from Capacitances import (vol_conc_cells,
@@ -7,11 +8,9 @@ C_conc_cells,
 vol_air_cells,
 C_air_cells)
 from Resistances import *
+from animation_vis import animate_thermal_system
 
-def controle(T1, T6) -> bool:
-    pass
-
-def main():
+def generer_matrices():
     # résistances inter cellules d'air
     R_horiz = [sp.Symbol(f'R{i}{i+1}') for i in range(1, 6)]
     
@@ -52,13 +51,73 @@ def main():
     subs_res_conc_off = dict(zip(R_vert, R_convs_naturelles))
     subs_res_ext = dict(zip(R_ext, R_Tbet_Text))
 
+
+    ##### test values #####
+
+    # subs_cap = dict(zip(C, np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, np.inf])))
+    # subs_res_cell_on = dict(zip(R_horiz, 5*np.ones(6)))
+    # subs_res_cell_off = dict(zip(R_horiz, 5*np.ones(6)))
+    # subs_res_conc_on = dict(zip(R_vert, 5*np.ones(6)))
+    # subs_res_conc_off = dict(zip(R_vert, 5*np.ones(6)))
+    # subs_res_ext = dict(zip(R_ext, 5*np.ones(6)))
+
+    #########
+
     transfer_mat = transfer_mat.subs(subs_cap).subs(subs_res_ext)
-    
+
+    # corrige les constantes de temps pour être selon 2 minutes
     transfert_mat_on = transfer_mat.subs(subs_res_cell_on).subs(subs_res_conc_on)
     transfert_mat_off = transfer_mat.subs(subs_res_cell_off).subs(subs_res_conc_off)
 
-    print(sp.latex(transfert_mat_on))
-    # print(sp.latex(transfert_mat_off))
+    return np.array(transfert_mat_on).astype(np.float64), np.array(transfert_mat_off).astype(np.float64)
+
+def controle(T1, T6, is_on) -> bool:
+    if T1 < -15 or T6 < -15:
+        return True
+    elif T1 < 50 and T6 < 50 and is_on:
+        return True
+    else:
+        return False
+        
+
+def temp_sol(t):
+    # la température du sol oscille entre -15 et -5 l'hivers au cours d'une journée
+    return -5*np.cos(t*np.pi/(24*15)) - 10
+
+def simulate(duree, mats):
+    # duree de la simulation en jours
+    # timestep est de 2 minutes
+    duree = duree * 24 * 30 # 24 * 30 * 2 minutes dans une journee
+    
+    # on initialise à -10 degree partout
+    temperatures = np.full((13), -10)
+    historique_temperature = np.zeros((duree, 13))
+
+    chauffage = False
+    source = [np.zeros((13,)), np.array([10e3, 15e3, 10e3, 7.5e3, 7.5e3, 10e3, 0, 0, 0, 0, 0, 0, 0])*120]
+
+    for i in range(duree):
+        temperatures[12] = temp_sol(i)
+        historique_temperature[i] = temperatures
+        
+        #chauffage = controle(*temperatures[[0, 5]], chauffage) # on sonde les températures aux bouts (cellules d'airs)
+        temperatures =  mats[chauffage] @ temperatures + temperatures# + source[chauffage]
+
+    return historique_temperature
+    
+        
+def main():
+    mats = generer_matrices()
+
+    hist = simulate(31, mats)
+    # animate_thermal_system(hist)
+    x = np.linspace(0, 31, 31*24*30)
+    plt.plot(x, hist[:, 0], label='Cellule d\'air 1')
+    plt.ylim(-20, 50)
+    plt.show()
+    
+
+
 
 if __name__ == '__main__':
     main()
