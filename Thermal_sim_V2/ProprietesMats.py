@@ -1,3 +1,5 @@
+import numpy as np
+
 # Dimension totale
 tot_len = 26.1 
 tot_width = 3.7
@@ -21,6 +23,14 @@ isbout_vec = [True, False, False, False, False, True]
 k_insul = 0.02  # W/mK
 thickness_insul = 0.1  # m
 
+# Propriétés de l'acier
+k_acier = 50  # W/mK
+thickness_acier = 0.0095  # m
+
+# Propriétés de l'asphalte
+k_asphalte = 0.8  # W/mK
+thickness_asphalte = 0.08
+
 # Propriétés de l'air
 cp_air = 1005  # J/kgK
 rho_air = 1.225  # kg/m3
@@ -36,6 +46,9 @@ m_a54_on = 0.2915
 m_a56_on = 0.4694
 m_a65_on = 0.4070
 
+m_on_going_right = [m_a12_on, m_a23_on, m_a34_on, m_a45_on, m_a56_on]
+m_on_going_left = [m_a21_on, m_a32_on, m_a43_on, m_a54_on, m_a65_on]
+
 m_a12_off = 0.04113
 m_a21_off = 0.06844
 m_a23_off = 0.05290
@@ -46,3 +59,17 @@ m_a45_off = 0.04163
 m_a54_off = 0.08528
 m_a56_off = 0.03718
 m_a65_off = 0.05788
+
+m_off_going_right = [m_a12_off, m_a23_off, m_a34_off, m_a45_off, m_a56_off]
+m_off_going_left = [m_a21_off, m_a32_off, m_a43_off, m_a54_off, m_a65_off]
+
+m_infiltr = np.abs([0.04107/2 + 0.04483, #1
+             (0.04107 + 0.01930)/2,#2
+             (0.01930 - 0.06402)/2,#3
+             (-0.06402 - 0.05980)/2,#4
+             (-0.05980 - 0.03247)/2,#5
+             -0.03247/2 + 0.02567])#6
+
+# Propriétés des cellules
+heater_power = [10e3, 15e3, 10e3, 7.5e3, 7.5e3, 10e3]
+# heater_off = [0, 0, 0, 0, 0, 0]
