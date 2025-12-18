@@ -18,6 +18,7 @@ k_conc = 1.1  # W/mK
 
 # Propriétés des cellules
 isbout_vec = [True, False, False, False, False, True]
+heater_power = [10e3, 15e3, 10e3, 7.5e3, 7.5e3, 10e3]
 
 # Propriétés de l'isolant
 k_insul = 0.02  # W/mK
@@ -75,7 +76,3 @@ m_infiltr = np.abs([0.04107/2 + 0.04483, #1
              (-0.06402 - 0.05980)/2,#4
              (-0.05980 - 0.03247)/2,#5
              -0.03247/2 + 0.02567])#6
-
-# Propriétés des cellules
-heater_power = [10e3, 15e3, 10e3, 7.5e3, 7.5e3, 10e3]
-# heater_off = [0, 0, 0, 0, 0, 0]
