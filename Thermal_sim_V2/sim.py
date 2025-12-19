@@ -147,8 +147,15 @@ def simulation(csv_path, t_end_hours=200):
     # Graphique Températures
     ax1.plot(time_res, temp_ext_res, 'k--', label="T_ext", alpha=0.7, linewidth=1.5)
     colors = plt.cm.jet(np.linspace(0, 1, 6))
-    for i in range(6):
-        ax1.plot(time_res, temp_res[:, i], label=f"Zone P{i+1}", color=colors[i])
+    # for i in range(6):
+        # ax1.plot(time_res, temp_res[:, i], label=f"Zone P{i+1}", color=colors[i])
+    ax1.plot(time_res, temp_res[:, 0], label=f"Zone P1", color=colors[0])
+    
+    df = pd.read_csv(csv_path, sep=';')
+
+    # col_temp = df.columns[5] # "Outdoor temperature [deg. C]"
+    # print(col_temp)
+    # ax1.plot(time_res, df[col_temp][1:], label=f"Zone P2", color=colors[1])
         
     ax1.axhline(y=3.0, color='gray', linestyle=':', alpha=0.5, label="Seuil Allumage (3°C)")
     ax1.set_ylabel("Température (°C)")
